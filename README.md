@@ -1,6 +1,6 @@
 # Voice Cloning 
 
-### 🔄 Pipeline Overview
+### Pipeline Overview
 
 The voice cloning system follows a three-stage architecture:
 
@@ -15,7 +15,7 @@ The voice cloning system follows a three-stage architecture:
 
 ---
 
-### 📊 Dataset
+### Dataset
 
 - **Primary Training Dataset**: LibriSpeech ASR corpus
   - A large-scale corpus of read English speech
@@ -29,7 +29,7 @@ The voice cloning system follows a three-stage architecture:
 
 ---
 
-## 🎙️ Tacotron: Text-to-Spectrogram Synthesis
+## Tacotron: Text-to-Spectrogram Synthesis
 
 Tacotron is an end-to-end generative text-to-speech model that converts character sequences directly into mel-spectrograms. Its encoder-decoder architecture with attention mechanism enables it to learn complex mappings between text and speech features.
 
@@ -37,7 +37,7 @@ The **CBHG (Convolutional Bank + Highway network + Bidirectional GRU)** module i
 
 ---
 
-### 🏗️ Tacotron Architecture
+### Tacotron Architecture
 
 ![Tacotron Architecture](https://drive.google.com/uc?export=view&id=1BWcAj0ooLchqHnH0oUARYPh2a-t_hxNM)
 
@@ -60,13 +60,13 @@ The **CBHG (Convolutional Bank + Highway network + Bidirectional GRU)** module i
 
 ---
 
-## 🔧 CBHG Module Architecture
+## CBHG Module Architecture
 
 ![CBHG Module](https://drive.google.com/uc?export=view&id=1Mn7Qxx0qGJxsOEhNgWmALptz5JaaG8eP)
 
 The **CBHG (1D Convolution Bank + Highway network + Bidirectional GRU)** module is designed to extract robust sequential representations at multiple time scales.
 
-### 📐 Internal Structure:
+### Internal Structure:
 
 - **1D Convolution Bank**: 
   - Multiple parallel convolutions with varying kernel sizes (K=1 to K=16)
@@ -90,7 +90,7 @@ The **CBHG (1D Convolution Bank + Highway network + Bidirectional GRU)** module 
   - Captures long-range dependencies in both temporal directions
   - Produces context-aware representations for each time step
 
-### 🎯 Role in Tacotron:
+### Role in Tacotron:
 
 - **Encoder CBHG**: Transforms character embeddings into rich, context-aware representations
 - **Post-net CBHG**: Refines decoder outputs into higher-quality spectrograms with better temporal coherence
@@ -101,13 +101,13 @@ By integrating attention mechanisms, recurrent networks, and the powerful CBHG a
 
 ---
 
-## 🌊 WaveRNN: High-Fidelity Neural Vocoder
+##  WaveRNN: High-Fidelity Neural Vocoder
 
 **WaveRNN** (Efficient Neural Audio Synthesis) is a lightweight yet powerful neural vocoder that generates audio waveforms sample-by-sample from mel-spectrograms. Unlike traditional vocoders, WaveRNN produces extremely natural-sounding speech suitable for real-time applications.
 
 ---
 
-### 🏗️ WaveRNN Architecture Overview
+### WaveRNN Architecture Overview
 
 The WaveRNN architecture consists of several integrated components working in harmony:
 
@@ -133,7 +133,7 @@ The WaveRNN architecture consists of several integrated components working in ha
 
 ---
 
-### 🔄 Data Flow
+### Data Flow
 
 **Input** → Mel-spectrogram frames + Previously generated samples  
 **Processing** → ResNet feature extraction → Upsampling → GRU processing  
@@ -141,7 +141,7 @@ The WaveRNN architecture consists of several integrated components working in ha
 
 ---
 
-### 📊 Model Diagram
+### Model Diagram
 
 ![WaveRNN Architecture](https://drive.google.com/uc?export=view&id=1IWoLf-ro0nGyfnyPDTQpjK3TEq5HbjeB)
 
@@ -149,7 +149,7 @@ The WaveRNN architecture consists of several integrated components working in ha
 
 ---
 
-### ⚡ Key Advantages
+### Key Advantages
 
 - **Real-time Performance**: Optimized for inference on consumer-grade hardware
 - **High Audio Quality**: Produces clear, natural-sounding speech with minimal artifacts
@@ -160,7 +160,7 @@ WaveRNN serves as the final synthesis stage, converting Tacotron's mel-spectrogr
 
 ---
 
-## 🔗 End-to-End Integration
+## End-to-End Integration
 
 This voice cloning system seamlessly integrates three specialized neural network models into a unified pipeline:
 
@@ -173,7 +173,7 @@ This voice cloning system seamlessly integrates three specialized neural network
 ### Stage 3: Waveform Synthesis
 **WaveRNN Vocoder** → Converts mel-spectrogram → Produces high-quality audio output
 
-### 🎯 Complete Workflow:
+###  Complete Workflow:
 
 ```
 Input Audio (5s) → Speaker Encoder → Speaker Embedding
@@ -191,7 +191,7 @@ This integrated approach enables **one-shot voice cloning** with minimal trainin
 
 ---
 
-## 📚 References & Resources
+## References & Resources
 
 ### Research Papers:
 - [Tacotron: Towards End-to-End Speech Synthesis](https://arxiv.org/abs/1703.10135)
